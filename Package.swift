@@ -59,7 +59,6 @@ let package = Package(
     name: "swift-nio-ssl",
     products: [
         .library(name: "NIOSSL", targets: ["NIOSSL"]),
-        .library(name: "CNIOBoringSSL", targets: ["CNIOBoringSSL"]),
         .executable(name: "NIOTLSServer", targets: ["NIOTLSServer"]),
         .executable(name: "NIOSSLHTTP1Client", targets: ["NIOSSLHTTP1Client"]),
 /* This target is used only for symbol mangling. It's added and removed automatically because it emits build warnings. MANGLE_START
@@ -70,11 +69,7 @@ MANGLE_END */
     targets: [
         .target(
             name: "CNIOBoringSSL",
-            cSettings: [
-              .define("_GNU_SOURCE"),
-              .define("_POSIX_C_SOURCE", to: "200112L"),
-              .define("_DARWIN_C_SOURCE")
-            ]),
+            ),
         .target(
             name: "CNIOBoringSSLShims",
             dependencies: [
